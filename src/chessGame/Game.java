@@ -10,6 +10,7 @@ public class Game {
 		mainLoop(mainBoard);
 	}
 	public void mainLoop(Board mainBoard){
+		System.out.println("Begin Loop");
 		int destX,destY,posX,posY,ID = 0;
 		byte team = 1;
 		String move = "";
