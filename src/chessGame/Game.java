@@ -18,6 +18,7 @@ public class Game {
 			
 			
 			move = input(team);
+			
 			destX = Character.getNumericValue(move.charAt(1));
 			destY = Character.getNumericValue(move.charAt(2));
 			if(move.charAt(0)=='p') ID = 0;

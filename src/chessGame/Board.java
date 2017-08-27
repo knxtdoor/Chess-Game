@@ -6,13 +6,23 @@ public class Board {
 		
 	}
 	public void newGame(){
+		
+		//Fill whole board with Null pieces
+		for(int x=0;x<8;x++){
+			for(int y = 0;y <8; y++){
+				board[x][y] = new NullPiece();
+			}
+		}
+		
+		
 		//Fill White side second row (1) with pawns
 		for(int x=0;x<8;x++){
 			board[1][x] = new Pawn((byte) 1, 1, x);
 		}
+		System.out.println("Id at creation: " + board[1][0].checkID());
 		//Fill Black side second row (6) with pawns
 		for(int y=0;y<8;y++){
-			board[1][y] = new Pawn((byte) 0, 1, y);
+			board[6][y] = new Pawn((byte) 0, 1, y);
 		}
 		
 		//Create white knights
@@ -55,9 +65,10 @@ public class Board {
 	}
 	public int[] pieceFind(int ID, int destX, int destY){
 		int[] num = new int[2];
-		for(int a = 1; a<8; a++){
-			for(int b = 0; b<8; a++){
-				System.out.println(board[a][b]);
+		for(int a = 0; a<8; a++){
+			for(int b = 0; b<8; b++){
+			//	System.out.println(a+ " " + b);				
+		//		System.out.println("Piece Id: " + board[a][b].checkID());
 				if(ID == board[a][b].checkID()){
 					if (board[a][b].move(destX, destY)){
 						num[0] = a;
@@ -75,7 +86,8 @@ public class Board {
 		board[destX][destY] = board[posX][posY];
 		board[destX][destY].x = destX;
 		board[destX][destY].y = destY;
-		board[posX][posY] = null;
+		board[posX][posY] = new NullPiece();
+		System.out.println("Id at old Pos: "+ board[posX][posY].checkID());
 
 	}
 }

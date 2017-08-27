@@ -15,12 +15,12 @@ public class Pawn extends Piece{
 	}
 	public boolean move(int destX, int destY){
 		if(isFirst = true){
-			if(destX==(this.x)+2){
+			if(destX==(this.y)+2){
 				isFirst= false;  
 				return true;
 			}
 		}
-		if(destX==(this.x)+1){
+		if(destX==(this.y)+1){
 			isFirst = false;
 			return true;
 		}
