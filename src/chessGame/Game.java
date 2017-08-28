@@ -19,17 +19,24 @@ public class Game {
 			
 			move = input(team);
 			
-			destX = Character.getNumericValue(move.charAt(1));
-			destY = Character.getNumericValue(move.charAt(2));
+			destX = Character.getNumericValue(move.charAt(3));
+			destY = Character.getNumericValue(move.charAt(4));
 			if(move.charAt(0)=='p') ID = 0;
 			if(move.charAt(0)=='n') ID = 1;
 			
-			int[] target = mainBoard.pieceFind(ID, destX, destY);
-			posX = target[0];
-			posY = target[1];
-			if(posX == -1|| posY== -1) error();
+			//int[] target = mainBoard.pieceFind(ID, destX, destY);
+			//posX = target[0];
+			//posY = target[1];
+			posX = Character.getNumericValue(move.charAt(1));
+			posY = Character.getNumericValue(move.charAt(2));
+			//	if(posX == -1|| posY== -1) error();
+			if(mainBoard.GetPieceSquare(posX, posY) != ID) { 
+				System.out.println("Invalid!");
+				move  = input(team); 
+			}
+			else{
 			mainBoard.move(posX, posY, destX, destY);
-			
+			}
 				
 			
 			
@@ -40,11 +47,11 @@ public class Game {
 	
 	public String input(byte team){
 		String move ="";
-		if(team == 0){
+		if(team == 1){
 			System.out.println("White's Turn: ");
 			move = in.nextLine();
 		}
-		if(team == 1){
+		if(team == 0){
 			System.out.println("Black's Turn: ");
 			move = in.nextLine();
 		}

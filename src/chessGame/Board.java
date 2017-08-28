@@ -22,7 +22,7 @@ public class Board {
 		System.out.println("Id at creation: " + board[1][0].checkID());
 		//Fill Black side second row (6) with pawns
 		for(int y=0;y<8;y++){
-			board[6][y] = new Pawn((byte) 0, 1, y);
+			board[6][y] = new Pawn((byte) 0, 6, y);
 		}
 		
 		//Create white knights
@@ -57,7 +57,7 @@ public class Board {
 		
 		//Create white king
 		board[0][4] = new King((byte) 1);
-		
+		 
 		//Create black king
 		board[7][3] = new King((byte) 0);
 				
@@ -88,6 +88,10 @@ public class Board {
 		board[destX][destY].y = destY;
 		board[posX][posY] = new NullPiece();
 		System.out.println("Id at old Pos: "+ board[posX][posY].checkID());
+		System.out.println("Id at new Pos, "+destX+" "+destY+" :"+ board[destX][destY].checkID());
 
+	}
+	public int GetPieceSquare(int PosX, int PosY){
+		return this.board[PosX][PosY].checkID();
 	}
 }
