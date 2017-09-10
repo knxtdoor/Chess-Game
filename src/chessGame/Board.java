@@ -91,7 +91,7 @@ public class Board {
 		System.out.println("Id at new Pos, "+destX+" "+destY+" :"+ board[destX][destY].checkID());
 
 	}
-	public int GetPieceSquare(int PosX, int PosY){
+	public int GetPiece(int PosX, int PosY){
 		return this.board[PosX][PosY].checkID();
 	}
 }

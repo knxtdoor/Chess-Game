@@ -17,7 +17,7 @@ public class Game {
 		while (true){
 			
 			
-			move = input(team);
+			move = input(team, mainBoard);
 			
 			destX = Character.getNumericValue(move.charAt(3));
 			destY = Character.getNumericValue(move.charAt(4));
@@ -30,9 +30,9 @@ public class Game {
 			posX = Character.getNumericValue(move.charAt(1));
 			posY = Character.getNumericValue(move.charAt(2));
 			//	if(posX == -1|| posY== -1) error();
-			if(mainBoard.GetPieceSquare(posX, posY) != ID) { 
+			if(mainBoard.GetPiece(posX, posY) != ID) { 
 				System.out.println("Invalid!");
-				move  = input(team); 
+				move  = input(team, mainBoard); 
 			}
 			else{
 			mainBoard.move(posX, posY, destX, destY);
@@ -45,19 +45,30 @@ public class Game {
 	}
 	
 	
-	public String input(byte team){
+	public String input(byte team, Board mainBoard){
 		String move ="";
 		if(team == 1){
-			System.out.println("White's Turn: ");
-			move = in.nextLine();
+			System.out.println("White's Turn");
 		}
 		if(team == 0){
-			System.out.println("Black's Turn: ");
-			move = in.nextLine();
+			System.out.println("Black's Turn");
 		}
-		return move;
-		
+		System.out.println("Do you want to (M)ove a piece or (E)xamine the board?");
+		move = in.nextLine();
+		if(move.equalsIgnoreCase("m")){
+			System.out.println("What is your move?");
+			move = in.nextLine();
+			return move;			
+		}
+		if(move.equalsIgnoreCase("e")){
+			System.out.println("What space do you want to examine?");
+			move = in.nextLine();
+			System.out.println("The piece at "+Character.getNumericValue(move.charAt(0))+", "+Character.getNumericValue(move.charAt(1))+" is "+mainBoard.GetPiece(Character.getNumericValue(move.charAt(0)), Character.getNumericValue(move.charAt(1))));
+			input(team, mainBoard);
+		}
+		return move; 
 	}
+	
 	public void error(){
 		System.out.println("Something went wrong!");
 		System.exit(0);
